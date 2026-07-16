@@ -372,7 +372,7 @@ export default function ProgramsPage() {
               const isFlagship = prog.badge === "Industry Flagship (PGDIM)" || prog.badge.includes("Highest");
               
               return (
-                <ScrollReveal key={prog.id} animation="fadeUp" delay={index * 100}>
+                <ScrollReveal key={prog.id} animation="fadeUp" delayMs={index * 100}>
                   <div className="bg-white rounded-2xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between h-full hover:shadow-xl hover:border-[#2563EB]/40 hover:-translate-y-1.5 transition-all duration-300 group">
                     <div className="p-7 space-y-5">
                       {/* Top Bar: Icon, Code & Badge */}
