@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { Mail, ExternalLink, ArrowRight, BookOpen, CheckCircle2 } from "lucide-react";
 
 const Linkedin = ({ className }: { className?: string }) => (
@@ -127,8 +128,8 @@ export default function FacultyPage() {
     : facultyMembers.filter(f => f.deptCategory === selectedDept);
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
-      
+    <div className="flex flex-col w-full min-h-screen bg-white dark:bg-[#0A0A0A] text-slate-900 dark:text-gray-100 transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* 1. HERO SECTION */}
       <section className="relative w-full h-[450px] md:h-[520px] flex items-center justify-center overflow-hidden">
         <Image
@@ -547,7 +548,7 @@ export default function FacultyPage() {
           </p>
         </div>
       </section>
-
+      </ScrollReveal>
     </div>
   );
 }

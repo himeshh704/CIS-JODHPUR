@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import {
   Award,
   Home,
@@ -55,9 +56,10 @@ export default function ScholarshipPage() {
   const projection = calculateProjection();
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] selection:bg-[#2563EB] selection:text-white font-sans flex flex-col">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0A0A0A] text-[#0F172A] dark:text-gray-100 selection:bg-[#2563EB] selection:text-white font-sans flex flex-col transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* 1. PORTAL SPECIFIC HEADER (Image 1) */}
-      <header className="bg-white border-b border-[#E2E8F0] sticky top-0 z-50">
+      <header className="bg-white dark:bg-[#111] border-b border-[#E2E8F0] dark:border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-11 h-11 bg-white border-2 border-[#1E3A8A] text-[#1E3A8A] flex items-center justify-center font-serif text-2xl font-bold shadow-sm group-hover:bg-[#1E3A8A] group-hover:text-white transition-all">
@@ -659,7 +661,7 @@ export default function ScholarshipPage() {
           </div>
         </div>
       </section>
-
+      </ScrollReveal>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import {
   Phone, 
   Mail
 } from "lucide-react";
+import { ScrollReveal, AnimatedProgressBar } from "@/components/motion/MotionSystem";
 
 export default function PlacementsPage() {
   const [loaded, setLoaded] = useState(false);
@@ -82,6 +83,7 @@ export default function PlacementsPage() {
 
       {/* 2. 3 PILLARS SECTION matching input_file_2.png */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-gray-100">
+        <ScrollReveal animation="fadeUp">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-14">
           
           <div className="group">
@@ -121,10 +123,12 @@ export default function PlacementsPage() {
           </div>
 
         </div>
+        </ScrollReveal>
       </section>
 
       {/* 3. ROADMAP TO SUCCESS (4 STEPS) matching input_file_3.png */}
       <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-gray-100">
+        <ScrollReveal animation="fadeUp">
         <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1E293B] mb-14 sm:mb-20">
           The Roadmap to Success
         </h2>
@@ -184,10 +188,12 @@ export default function PlacementsPage() {
           </div>
 
         </div>
+        </ScrollReveal>
       </section>
 
       {/* 4. GLOBAL RECRUITMENT PARTNERS matching input_file_4.png */}
       <section className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-gray-100 overflow-hidden">
+        <ScrollReveal animation="fadeUp">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12 sm:mb-16">
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-[#1E293B]">
             Global Recruitment Partners
@@ -220,6 +226,7 @@ export default function PlacementsPage() {
             </div>
           ))}
         </div>
+        </ScrollReveal>
       </section>
 
       {/* 5. DIVERSE INDUSTRIAL IMPACT matching input_file_1.png */}
@@ -227,16 +234,18 @@ export default function PlacementsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           <div className="lg:col-span-5 space-y-6">
+            <ScrollReveal animation="slideInLeft">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1E293B] leading-tight">
               Diverse Industrial <br />
               Impact
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-sm">
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-sm pt-2">
               Our graduates permeate the top layers of global enterprise, bringing CIS excellence to every major sector.
             </p>
+            </ScrollReveal>
           </div>
 
-          {/* Horizontal Progress Bars */}
+          {/* Horizontal Progress Bars animated on scroll */}
           <div className="lg:col-span-7 space-y-7 sm:space-y-8 w-full pt-2">
             {[
               { label: "IT & Software", pct: "35%", width: "55%" },
@@ -246,18 +255,14 @@ export default function PlacementsPage() {
               { label: "Education", pct: "10%", width: "16%" },
               { label: "Others", pct: "5%", width: "8%" },
             ].map((bar, idx) => (
-              <div key={idx} className="space-y-2.5">
-                <div className="flex items-center justify-between text-sm sm:text-base">
-                  <span className="font-sans font-semibold text-[#1E293B]">{bar.label}</span>
-                  <span className="font-sans font-bold text-[#2563EB]">{bar.pct}</span>
-                </div>
-                <div className="w-full h-2 sm:h-2.5 rounded-full bg-gray-100 overflow-hidden">
-                  <div 
-                    className="h-full bg-[#2563EB] rounded-full transition-all duration-1000 ease-out" 
-                    style={{ width: loaded ? bar.width : "0%" }}
-                  />
-                </div>
-              </div>
+              <AnimatedProgressBar
+                key={idx}
+                label={bar.label}
+                percentage={bar.pct}
+                width={bar.width}
+                delayMs={idx * 150}
+                durationMs={1200}
+              />
             ))}
           </div>
 
@@ -266,6 +271,7 @@ export default function PlacementsPage() {
 
       {/* 6. VOICES OF ACHIEVEMENT matching input_file_5.png */}
       <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-gray-100">
+        <ScrollReveal animation="fadeUp">
         <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1E293B] mb-12 sm:mb-16">
           Voices of Achievement
         </h2>
@@ -314,10 +320,12 @@ export default function PlacementsPage() {
             </div>
           ))}
         </div>
+        </ScrollReveal>
       </section>
 
       {/* 7. YOUR FUTURE, ENGINEERED FOR SUCCESS matching input_file_6.png */}
       <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-gray-100 text-center">
+        <ScrollReveal animation="scaleReveal">
         <div className="max-w-3xl mx-auto space-y-6">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1E293B] leading-tight">
             Your Future, Engineered for Success
@@ -334,10 +342,12 @@ export default function PlacementsPage() {
             </Link>
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
       {/* 8. STRATEGIC CAREER ADVISORY BANNER matching input_file_7.png */}
       <section className="pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <ScrollReveal animation="fadeUp">
         <div className="bg-[#2563EB] text-white rounded-2xl sm:rounded-3xl p-8 sm:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center shadow-lg">
           <div className="lg:col-span-8 space-y-4">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white">
@@ -358,6 +368,7 @@ export default function PlacementsPage() {
             </a>
           </div>
         </div>
+        </ScrollReveal>
       </section>
 
     </div>

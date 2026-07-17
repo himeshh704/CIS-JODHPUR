@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { 
   Calendar, 
   ChevronDown, 
@@ -67,7 +68,8 @@ export default function ApplyPage() {
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-white text-[#1E293B] selection:bg-[#2563EB] selection:text-white pt-16 pb-24 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col w-full min-h-screen bg-white dark:bg-[#0A0A0A] text-[#1E293B] dark:text-gray-100 selection:bg-[#2563EB] selection:text-white pt-16 pb-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       <div className="max-w-7xl mx-auto w-full">
         
         {/* Top Header & Title */}
@@ -730,6 +732,7 @@ export default function ApplyPage() {
         )}
 
       </div>
+      </ScrollReveal>
     </div>
   );
 }

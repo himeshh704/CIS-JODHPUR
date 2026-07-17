@@ -1,5 +1,6 @@
 import React from "react";
 import NextLink from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import {
   ArrowRight,
   BookOpen,
@@ -24,8 +25,8 @@ const CAMPUS_SPLENDOR = "https://images.unsplash.com/photo-1541339907198-e08756d
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-[#111827] font-sans selection:bg-[#2563EB] selection:text-white">
-      
+    <div className="min-h-screen bg-white dark:bg-[#0A0A0A] text-[#111827] dark:text-gray-100 font-sans selection:bg-[#2563EB] selection:text-white transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* 1. HERO SECTION (matching input_file_4.png) */}
       <section className="relative min-h-[88vh] flex flex-col justify-between overflow-hidden bg-[#111827]">
         {/* Background Image & Overlay */}
@@ -1149,7 +1150,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      </ScrollReveal>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { 
   Play, 
   Compass, 
@@ -26,8 +27,8 @@ export default function CampusPage() {
   const [activeMasterPlanLayer, setActiveMasterPlanLayer] = useState<"all" | "academic" | "residential" | "solar">("all");
 
   return (
-    <div className="min-h-screen bg-white text-[#0F172A] selection:bg-[#2563EB] selection:text-white font-sans overflow-x-hidden">
-      
+    <div className="min-h-screen bg-white dark:bg-[#0A0A0A] text-[#0F172A] dark:text-gray-100 selection:bg-[#2563EB] selection:text-white font-sans overflow-x-hidden transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* 1. HERO SECTION matching uploaded_media_4_1784224377491.jpg */}
       <section className="relative min-h-[85vh] flex items-center justify-center pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-slate-950 overflow-hidden">
         {/* Background Aerial Sunset Photograph */}
@@ -759,6 +760,7 @@ export default function CampusPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }

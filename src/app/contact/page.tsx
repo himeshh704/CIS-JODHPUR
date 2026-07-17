@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { 
   Phone, 
   Mail, 
@@ -35,8 +36,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#1E293B] selection:bg-blue-600 selection:text-white pt-24 pb-0 overflow-x-hidden font-sans">
-      
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0A0A0A] text-[#1E293B] dark:text-gray-100 selection:bg-blue-600 selection:text-white pt-24 pb-0 overflow-x-hidden font-sans transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* 1. HERO SECTION (input_file_4.png) */}
       <section className="py-16 sm:py-24 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="inline-block bg-blue-50 text-[#2563EB] font-mono text-xs font-semibold px-3 py-1.5 rounded-md uppercase tracking-widest mb-6">
@@ -505,6 +506,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }

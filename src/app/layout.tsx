@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   description: "Centre for International Studies, Jodhpur. Premier higher education institution offering world-class international programs, breakthrough research, and rigorous industry immersion in Jodhpur, Rajasthan.",
 };
 
+import { BottomTabBar } from "@/components/BottomTabBar";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,11 +33,12 @@ export default function RootLayout({
       lang="en"
       className={`${geist.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans selection:bg-[#D97706] selection:text-white">
+      <body className="min-h-full flex flex-col font-sans selection:bg-[#2563EB] selection:text-white">
         <ThemeProvider>
           <Navbar />
-          <main className="flex-1 flex flex-col">{children}</main>
+          <main className="flex-1 flex flex-col pb-16 lg:pb-0">{children}</main>
           <Footer />
+          <BottomTabBar />
         </ThemeProvider>
       </body>
     </html>

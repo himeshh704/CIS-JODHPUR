@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { 
   CheckCircle2, 
   ArrowRight, 
@@ -48,10 +49,11 @@ export default function AdmissionsPage() {
   ];
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-white text-[#1E293B] selection:bg-[#2563EB] selection:text-white">
+    <div className="flex flex-col w-full min-h-screen bg-white dark:bg-[#0A0A0A] text-[#1E293B] dark:text-gray-100 selection:bg-[#2563EB] selection:text-white transition-colors duration-300">
       
       {/* 1. HERO SECTION */}
-      <section className="pt-16 pb-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-left w-full">
+      <ScrollReveal animation="fadeUp">
+        <section className="pt-16 pb-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-left w-full">
         <div className="inline-flex items-center gap-2.5 bg-[#EFF6FF]/70 border border-[#3B82F6]/30 text-[#2563EB] font-mono text-xs sm:text-sm px-4 py-2 rounded-md font-bold uppercase tracking-wider mb-6 shadow-sm">
           <Calendar className="w-4 h-4 text-[#2563EB] shrink-0" /> APPLICATION DEADLINE: MARCH 31, 2026
         </div>
@@ -71,9 +73,11 @@ export default function AdmissionsPage() {
           />
         </div>
       </section>
+      </ScrollReveal>
 
       {/* 2. THE ADMISSION JOURNEY (— FIVE STEPS TO EXCELLENCE) */}
-      <section className="w-full bg-[#EFF6FF]/60 py-24 px-4 sm:px-6 lg:px-8 border-y border-blue-100/80">
+      <ScrollReveal animation="fadeUp">
+      <section className="w-full bg-[#EFF6FF]/60 dark:bg-white/5 py-24 px-4 sm:px-6 lg:px-8 border-y border-blue-100/80 dark:border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-16">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] block mb-2">
@@ -747,7 +751,7 @@ export default function AdmissionsPage() {
           </div>
         </div>
       </section>
-
+      </ScrollReveal>
     </div>
   );
 }

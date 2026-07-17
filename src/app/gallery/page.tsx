@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { 
   Play, 
   Compass, 
@@ -134,8 +135,8 @@ export default function GalleryPage() {
     : galleryItems.filter(item => item.category === activeFilter);
 
   return (
-    <div className="min-h-screen bg-white text-[#1E293B] font-sans selection:bg-[#2563EB] selection:text-white">
-      
+    <div className="min-h-screen bg-white dark:bg-[#0A0A0A] text-[#1E293B] dark:text-gray-100 font-sans selection:bg-[#2563EB] selection:text-white transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* 1. STICKY TOP SUB-NAVIGATION BAR */}
       <div className="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-16 sm:top-20 z-40 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
@@ -564,7 +565,7 @@ export default function GalleryPage() {
 
         </div>
       </section>
-
+      </ScrollReveal>
       {/* 7. GLOBAL FOOTER (Rendered automatically by Footer.tsx in layout.tsx) */}
     </div>
   );

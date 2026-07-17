@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { 
   Calendar as CalendarIcon, 
   MapPin, 
@@ -45,8 +46,8 @@ export default function EventsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#1E293B] font-sans selection:bg-[#2563EB]/10 selection:text-[#2563EB]">
-      
+    <div className="min-h-screen bg-white dark:bg-[#0A0A0A] text-[#1E293B] dark:text-gray-100 font-sans selection:bg-[#2563EB]/10 selection:text-[#2563EB] transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* SECTION 1: HERO BANNER (input_file_3.png) */}
       <section className="relative min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex items-center justify-center bg-[#1E293B] overflow-hidden">
         {/* Background architectural image with gradient overlay */}
@@ -497,6 +498,7 @@ export default function EventsPage() {
             </div>
           </div>
         </section>
+      </ScrollReveal>
     </div>
   );
 }

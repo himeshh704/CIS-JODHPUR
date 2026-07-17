@@ -81,6 +81,7 @@ export interface AnimatedCounterProps {
   durationMs?: number;
   percentage?: number; // For radial arc progression (0 to 100)
   className?: string;
+  decimals?: number;
 }
 
 export function AnimatedCounter({
@@ -91,6 +92,7 @@ export function AnimatedCounter({
   durationMs = 2000,
   percentage = 100,
   className = "",
+  decimals,
 }: AnimatedCounterProps) {
   const [currentValue, setCurrentValue] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
@@ -124,7 +126,9 @@ export function AnimatedCounter({
       
       // EASE-OUT DECEL interpolation curve: cubic-bezier(0.05, 0.7, 0.1, 1) approx: 1 - Math.pow(1 - progress, 3)
       const easeProgress = 1 - Math.pow(1 - progress, 3);
-      const nextValue = Math.floor(easeProgress * endValue);
+      const nextValue = decimals
+        ? Number((easeProgress * endValue).toFixed(decimals))
+        : Math.floor(easeProgress * endValue);
       
       setCurrentValue(nextValue);
 
@@ -177,7 +181,7 @@ export function AnimatedCounter({
         {/* Value displayed inside circle */}
         <div className="absolute inset-0 flex items-center justify-center text-xl sm:text-2xl font-bold font-serif text-slate-900 dark:text-white">
           {prefix}
-          {currentValue.toLocaleString()}
+          {decimals ? currentValue.toFixed(decimals) : currentValue.toLocaleString()}
           {suffix}
         </div>
       </div>
@@ -302,6 +306,74 @@ export function TimelineTrace({ milestones }: { milestones: MilestoneItem[] }) {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * 4. AnimatedProgressBar Component (Sheet 02 - Horizontal Progress Bar Reveal)
+ * High-fidelity horizontal progress bar that expands when entering the viewport via IntersectionObserver.
+ */
+export interface AnimatedProgressBarProps {
+  label: string;
+  percentage: string | number; // e.g. "35%" or 35
+  width?: string; // e.g. "55%" or "35%"
+  durationMs?: number;
+  delayMs?: number;
+  className?: string;
+  barClassName?: string;
+}
+
+export function AnimatedProgressBar({
+  label,
+  percentage,
+  width,
+  durationMs = 1200,
+  delayMs = 0,
+  className = "",
+  barClassName = "bg-[#2563EB]",
+}: AnimatedProgressBarProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = elementRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const targetWidth = width || (typeof percentage === "number" ? `${percentage}%` : percentage);
+
+  return (
+    <div ref={elementRef} className={`space-y-2.5 ${className}`}>
+      <div className="flex items-center justify-between text-sm sm:text-base">
+        <span className="font-sans font-semibold text-[#1E293B]">{label}</span>
+        <span className={`font-sans font-bold text-[#2563EB] transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
+          {percentage}
+        </span>
+      </div>
+      <div className="w-full h-2 sm:h-2.5 rounded-full bg-gray-100 overflow-hidden">
+        <div
+          className={`h-full rounded-full transition-all ease-out ${barClassName}`}
+          style={{
+            width: isVisible ? targetWidth : "0%",
+            transitionDuration: `${durationMs}ms`,
+            transitionDelay: `${delayMs}ms`,
+          }}
+        />
       </div>
     </div>
   );

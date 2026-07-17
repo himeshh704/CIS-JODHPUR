@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { 
   MessageSquare, 
   Code, 
@@ -15,8 +16,8 @@ import {
 
 export default function CampusLifePage() {
   return (
-    <div className="min-h-screen bg-white text-[#111827] flex flex-col font-sans selection:bg-[#2563EB]/10 selection:text-[#2563EB]">
-      
+    <div className="min-h-screen bg-white dark:bg-[#0A0A0A] text-[#111827] dark:text-gray-100 flex flex-col font-sans selection:bg-[#2563EB]/10 selection:text-[#2563EB] transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* 1. Sticky Sub-Navigation matching uploaded_media_0_1784223337133.png */}
       <div className="sticky top-[56px] sm:top-[64px] z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 py-3.5 px-4 sm:px-8 transition-all">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -783,6 +784,7 @@ export default function CampusLifePage() {
           </Link>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }

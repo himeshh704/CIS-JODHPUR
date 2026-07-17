@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/motion/MotionSystem";
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -139,10 +140,10 @@ export default function ResearchPage() {
   ];
 
   return (
-    <div className="flex flex-col w-full bg-white text-[#111827] overflow-x-hidden">
-      
+    <div className="flex flex-col w-full bg-white dark:bg-[#0A0A0A] text-[#111827] dark:text-gray-100 overflow-x-hidden transition-colors duration-300">
+      <ScrollReveal animation="fadeUp">
       {/* 1. HERO SECTION matching input_file_10.png & input_file_0.png */}
-      <section className="relative bg-[#F8FAFC] border-b border-gray-100 py-20 sm:py-28 px-4 sm:px-6 lg:px-8 w-full overflow-hidden">
+      <section className="relative bg-[#F8FAFC] dark:bg-white/5 border-b border-gray-100 dark:border-white/10 py-20 sm:py-28 px-4 sm:px-6 lg:px-8 w-full overflow-hidden">
         {/* Subtle architectural backdrop shading */}
         <div className="absolute inset-0 pointer-events-none opacity-40 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] z-0" />
         
@@ -480,6 +481,7 @@ export default function ResearchPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }
