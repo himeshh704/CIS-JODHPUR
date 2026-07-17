@@ -135,8 +135,21 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Action Bar matching input_file_1.png (APPLY NOW) */}
-          <div className="flex items-center gap-4 shrink-0">
+          {/* Action Bar matching input_file_1.png (APPLY NOW + Cmd K Search) */}
+          <div className="flex items-center gap-3 shrink-0">
+            {/* Command Palette Trigger */}
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
+              className="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 bg-gray-50/80 hover:bg-blue-50/70 hover:border-blue-200 text-gray-600 text-xs font-semibold transition-all group"
+              title="Search institutional routes (Cmd+K)"
+            >
+              <Search className="w-4 h-4 text-[#2563EB] group-hover:scale-110 transition-transform" />
+              <span className="hidden xl:inline">Search portal...</span>
+              <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] rounded bg-white border border-gray-200 font-mono text-gray-400 group-hover:text-[#2563EB]">
+                ⌘K
+              </kbd>
+            </button>
+
             {/* APPLY NOW Button exact matching Figma blue button */}
             <Link
               href="/apply"
@@ -156,41 +169,6 @@ export function Navbar() {
           </div>
         </div>
       </nav>
-
-      {/* Search Modal Overlay */}
-      {searchOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-20 px-4 animate-in fade-in duration-200">
-          <div className="w-full max-w-2xl rounded-2xl p-6 border shadow-2xl bg-white border-gray-200 text-[#111827]">
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-serif text-lg font-semibold flex items-center gap-2">
-                <Search className="w-5 h-5 text-[#2563EB]" /> Institutional Search Desk
-              </span>
-              <button onClick={() => setSearchOpen(false)} className="p-1 hover:opacity-70">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <input
-              type="text"
-              placeholder="Search programs, syllabus, hostel facilities, faculty directory..."
-              className="w-full px-4 py-3 rounded-xl border border-[#2563EB] bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-              autoFocus
-            />
-            <div className="mt-4 pt-4 border-t border-gray-200 text-xs flex flex-wrap gap-2">
-              <span className="opacity-60">Popular Queries:</span>
-              {["Master of Insurance Business", "Syllabus Directory", "Placement Lifecycle", "Faculty Directory", "Apply Online"].map((q) => (
-                <Link
-                  key={q}
-                  href={q === "Apply Online" ? "/apply" : "/programs"}
-                  onClick={() => setSearchOpen(false)}
-                  className="px-2.5 py-1 rounded-md bg-blue-50 text-[#2563EB] hover:bg-[#2563EB] hover:text-white transition-colors"
-                >
-                  {q}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (

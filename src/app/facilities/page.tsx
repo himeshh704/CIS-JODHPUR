@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 import { ScrollReveal } from "@/components/motion/MotionSystem";
+import { CampusMap } from "@/components/CampusMap";
 import { 
   Cpu, 
   ShieldAlert, 
@@ -179,6 +180,11 @@ export default function FacilitiesPage() {
           </div>
         </div>
       </ScrollReveal>
+
+      {/* Interactive Campus Blueprint Map */}
+      <div className="my-12">
+        <CampusMap />
+      </div>
 
       {/* 3. SUSTAINABLE GREEN CAMPUS INFRASTRUCTURE */}
       <ScrollReveal animation="fadeUp">

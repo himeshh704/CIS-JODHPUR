@@ -22,6 +22,9 @@ export const metadata: Metadata = {
 };
 
 import { BottomTabBar } from "@/components/BottomTabBar";
+import { SearchModal } from "@/components/SearchModal";
+import { NavigationProgress } from "@/components/NavigationProgress";
+import { StructuredData } from "@/components/StructuredData";
 
 export default function RootLayout({
   children,
@@ -33,12 +36,17 @@ export default function RootLayout({
       lang="en"
       className={`${geist.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
+      <head>
+        <StructuredData />
+      </head>
       <body className="min-h-full flex flex-col font-sans selection:bg-[#2563EB] selection:text-white">
         <ThemeProvider>
+          <NavigationProgress />
           <Navbar />
           <main className="flex-1 flex flex-col pb-16 lg:pb-0">{children}</main>
           <Footer />
           <BottomTabBar />
+          <SearchModal />
         </ThemeProvider>
       </body>
     </html>

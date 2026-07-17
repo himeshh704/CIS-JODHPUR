@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ScrollReveal } from "@/components/motion/MotionSystem";
+import { ScholarshipCalculator } from "@/components/ScholarshipCalculator";
 import {
   Award,
   Home,
@@ -57,7 +58,6 @@ export default function ScholarshipPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0A0A0A] text-[#0F172A] dark:text-gray-100 selection:bg-[#2563EB] selection:text-white font-sans flex flex-col transition-colors duration-300">
-      <ScrollReveal animation="fadeUp">
       {/* 1. PORTAL SPECIFIC HEADER (Image 1) */}
       <header className="bg-white dark:bg-[#111] border-b border-[#E2E8F0] dark:border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -546,6 +546,11 @@ export default function ScholarshipPage() {
             </p>
           </div>
 
+          {/* New Interactive Multi-Track Tuition & Scholarship Calculator */}
+          <div className="mb-16">
+            <ScholarshipCalculator />
+          </div>
+
           {/* Interactive Calculator Wrapper */}
           <div className="bg-white border border-[#DBEAFE] shadow-lg max-w-5xl mx-auto overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12">
@@ -661,7 +666,6 @@ export default function ScholarshipPage() {
           </div>
         </div>
       </section>
-      </ScrollReveal>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/motion/MotionSystem";
+import { ScholarshipCalculator } from "@/components/ScholarshipCalculator";
 import { 
   CheckCircle2, 
   ArrowRight, 
@@ -564,6 +565,11 @@ export default function AdmissionsPage() {
           >
             SCHEDULE FEE COUNSELING <ArrowRight className="w-4 h-4" />
           </Link>
+        </div>
+
+        {/* Interactive Tuition & Merit Scholarship Estimator */}
+        <div className="mt-12">
+          <ScholarshipCalculator />
         </div>
       </section>
 

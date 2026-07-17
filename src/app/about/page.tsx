@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { CampusMap } from "@/components/CampusMap";
 import { 
   Award, 
   Shield, 
@@ -469,6 +470,10 @@ export default function AboutPage() {
           </ScrollReveal>
         </section>
 
+        {/* Interactive Sandstone Campus Blueprint */}
+        <section className="py-12">
+          <CampusMap />
+        </section>
       </div>
 
       {/* 9. BOTTOM CTA BANNER (Experience CIS Jodhpur) */}
