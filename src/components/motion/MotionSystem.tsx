@@ -20,31 +20,44 @@ export function ScrollReveal({
   animation = "fadeUp",
   delayMs = 0,
   className = "",
-  threshold = 0.2,
+  threshold = 0,
   once = true,
 }: ScrollRevealProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  // Start visible (true) by default so static HTML and initial page loads are NEVER blank before JS hydration
+  const [isVisible, setIsVisible] = useState(true);
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = elementRef.current;
     if (!el) return;
 
+    const rect = el.getBoundingClientRect();
+    // If element is near top of screen (above the fold) or if container is huge, keep visible immediately
+    if (rect.top <= window.innerHeight + 150 || rect.height > window.innerHeight * 1.2) {
+      setIsVisible(true);
+      return;
+    }
+
+    // If element is far below the fold, hide it initially and observe until scrolled into view
+    setIsVisible(false);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting || entry.intersectionRatio > 0) {
           setIsVisible(true);
           if (once) observer.unobserve(el);
         } else if (!once) {
           setIsVisible(false);
         }
       },
-      { threshold, rootMargin: "0px 0px -10% 0px" }
+      { threshold: 0, rootMargin: "0px 0px 100px 0px" }
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
-  }, [threshold, once]);
+    return () => {
+      observer.disconnect();
+    };
+  }, [once]);
 
   const animationClassMap = {
     fadeUp: "animate-fade-up",
