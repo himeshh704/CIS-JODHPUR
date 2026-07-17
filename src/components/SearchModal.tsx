@@ -83,24 +83,37 @@ export function SearchModal() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Toggle on Cmd+K or Ctrl+K
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      // Check if user is typing inside an input or textarea
+      const target = e.target as HTMLElement;
+      const isInputActive = target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable);
+
+      // Toggle on Cmd+K or Ctrl+K (case insensitive check for 'k' or KeyK)
+      const isCmdK = (e.metaKey || e.ctrlKey) && (e.key.toLowerCase() === "k" || e.code === "KeyK");
+      // Also support Cmd+/ or Ctrl+/
+      const isCmdSlash = (e.metaKey || e.ctrlKey) && e.key === "/";
+      // Also support standalone '/' key when not actively typing inside a form input
+      const isSlashOnly = !isInputActive && !e.metaKey && !e.ctrlKey && !e.altKey && e.key === "/";
+
+      if (isCmdK || isCmdSlash || isSlashOnly) {
         e.preventDefault();
+        e.stopPropagation();
         setIsOpen(prev => !prev);
       }
       // Close on Escape
       if (e.key === "Escape" && isOpen) {
+        e.preventDefault();
         setIsOpen(false);
       }
     };
 
     const handleCustomOpen = () => setIsOpen(true);
 
-    window.addEventListener("keydown", handleKeyDown);
+    // Use capture: true so we intercept the event early before bubbling or browser defaults when page is focused
+    window.addEventListener("keydown", handleKeyDown, { capture: true });
     window.addEventListener("open-command-palette", handleCustomOpen);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown, { capture: true });
       window.removeEventListener("open-command-palette", handleCustomOpen);
     };
   }, [isOpen]);

@@ -141,12 +141,12 @@ export function Navbar() {
             <button
               onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
               className="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 bg-gray-50/80 hover:bg-blue-50/70 hover:border-blue-200 text-gray-600 text-xs font-semibold transition-all group"
-              title="Search institutional routes (Cmd+K)"
+              title="Search institutional routes (Cmd+K or press /)"
             >
               <Search className="w-4 h-4 text-[#2563EB] group-hover:scale-110 transition-transform" />
               <span className="hidden xl:inline">Search portal...</span>
               <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] rounded bg-white border border-gray-200 font-mono text-gray-400 group-hover:text-[#2563EB]">
-                ⌘K
+                ⌘K /
               </kbd>
             </button>
 
