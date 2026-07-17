@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
-  Search, 
-  Sparkles,
   Menu, 
   X, 
   ChevronDown, 
@@ -136,46 +134,8 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Action Bar matching input_file_1.png (APPLY NOW + Cmd K Search) */}
+          {/* Action Bar matching input_file_1.png (APPLY NOW) */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* WOW Command Palette Trigger Button */}
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
-              className="relative group overflow-hidden flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-gray-50/90 via-white/95 to-gray-50/90 border border-gray-200/80 hover:border-[#2563EB]/60 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_0_24px_rgba(37,99,235,0.18)] transition-all duration-300 active:scale-[0.98] cursor-pointer"
-              title="Search institutional routes (Cmd+K or press /)"
-            >
-              {/* Ambient Light Beam Sweep */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-1000 transition-transform bg-gradient-to-r from-transparent via-[#2563EB]/10 to-transparent pointer-events-none" />
-
-              {/* Magnifying Glass with Pulsing AI Dot */}
-              <div className="relative flex items-center justify-center shrink-0">
-                <Search className="w-4 h-4 text-[#2563EB] group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
-                <span className="absolute -top-1 -right-1 flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2563EB] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2563EB]"></span>
-                </span>
-              </div>
-
-              {/* Sparkle Icon & Premium Text */}
-              <div className="hidden xl:flex items-center gap-1.5 overflow-hidden">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse shrink-0" />
-                <span className="text-gray-600 group-hover:text-gray-900 transition-colors font-medium text-xs tracking-tight">
-                  Search portal & AI desk...
-                </span>
-              </div>
-
-              {/* 3D Tactile Hardware KBD Badges */}
-              <div className="hidden md:flex items-center gap-1 ml-0.5 shrink-0">
-                <kbd className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-mono font-bold rounded bg-gray-100 border border-gray-300/80 text-gray-600 shadow-[0_1.5px_0_rgba(0,0,0,0.15)] group-hover:border-[#2563EB]/40 group-hover:text-[#2563EB] group-hover:bg-blue-50/60 transition-all">
-                  ⌘K
-                </kbd>
-                <span className="text-[10px] text-gray-400 font-mono">or</span>
-                <kbd className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-mono font-bold rounded bg-gray-100 border border-gray-300/80 text-gray-600 shadow-[0_1.5px_0_rgba(0,0,0,0.15)] group-hover:border-[#2563EB]/40 group-hover:text-[#2563EB] group-hover:bg-blue-50/60 transition-all">
-                  /
-                </kbd>
-              </div>
-            </button>
-
             {/* APPLY NOW Button exact matching Figma blue button */}
             <Link
               href="/apply"
