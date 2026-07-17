@@ -39,38 +39,44 @@ export function BottomTabBar() {
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMenuOpen(false)}
           />
-          <div className="absolute bottom-0 left-0 right-0 max-h-[85vh] bg-white rounded-t-3xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300">
+          <div className="absolute bottom-0 left-0 right-0 max-h-[85vh] bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.15)] flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300 ease-out border-t border-gray-100">
             
+            {/* Native iOS/Android Bottom Sheet Drag Handle */}
+            <div className="w-full pt-3 pb-1 flex justify-center bg-gradient-to-r from-[#0F172A] to-[#1E293B]">
+              <div className="w-12 h-1.5 bg-white/30 rounded-full" />
+            </div>
+
             {/* Drawer Header */}
-            <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-gradient-to-r from-[#0F172A] to-[#1E293B] text-white">
+            <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gradient-to-r from-[#0F172A] to-[#1E293B] text-white">
               <div>
                 <span className="font-serif text-lg tracking-wide block">CIS Jodhpur</span>
                 <span className="text-[10px] font-mono text-blue-300 tracking-widest uppercase">Institutional Hub</span>
               </div>
               <button 
                 onClick={() => setMenuOpen(false)}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors active:scale-90"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Quick Links Grid */}
+            {/* Quick Links Grid with Staggered Entrance */}
             <div className="p-6 overflow-y-auto space-y-3">
               <span className="text-xs font-bold font-mono tracking-wider uppercase text-gray-400 block mb-2">
                 Quick Destinations
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {quickLinks.map((link) => {
+                {quickLinks.map((link, idx) => {
                   const IconComp = link.icon;
                   return (
                     <Link
                       key={link.name}
                       href={link.href}
                       onClick={() => setMenuOpen(false)}
-                      className="flex items-start gap-3 p-3.5 rounded-xl border border-gray-100 bg-gray-50/60 hover:bg-blue-50/70 hover:border-blue-200 transition-all active:scale-[0.98]"
+                      style={{ animationDelay: `${idx * 40}ms` }}
+                      className="flex items-start gap-3 p-3.5 rounded-xl border border-gray-100 bg-gray-50/60 hover:bg-blue-50/70 hover:border-blue-200 transition-all active:scale-[0.98] animate-in fade-in slide-in-from-bottom-2 duration-300 fill-mode-both"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-white shadow-sm border border-gray-100 flex items-center justify-center text-[#2563EB] flex-shrink-0">
+                      <div className="w-10 h-10 rounded-lg bg-white shadow-sm border border-gray-100 flex items-center justify-center text-[#2563EB] flex-shrink-0 group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
                         <IconComp className="w-5 h-5" />
                       </div>
                       <div>
@@ -83,7 +89,10 @@ export function BottomTabBar() {
               </div>
 
               {/* Action Banner */}
-              <div className="mt-6 p-5 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white shadow-md">
+              <div 
+                style={{ animationDelay: `${quickLinks.length * 40}ms` }}
+                className="mt-6 p-5 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white shadow-md animate-in fade-in slide-in-from-bottom-2 duration-300 fill-mode-both"
+              >
                 <h4 className="font-serif text-lg mb-1">Join the Class of 2026</h4>
                 <p className="text-xs text-blue-100 mb-4">
                   Applications are currently open across computational and business leadership tracks.
@@ -91,7 +100,7 @@ export function BottomTabBar() {
                 <Link
                   href="/apply"
                   onClick={() => setMenuOpen(false)}
-                  className="block w-full text-center py-3 rounded-xl bg-white text-[#2563EB] font-bold text-xs uppercase tracking-wider shadow-sm hover:bg-blue-50 transition-colors"
+                  className="block w-full text-center py-3 rounded-xl bg-white text-[#2563EB] font-bold text-xs uppercase tracking-wider shadow-sm hover:bg-blue-50 transition-colors active:scale-95"
                 >
                   Start Application
                 </Link>
